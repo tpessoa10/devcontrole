@@ -6,8 +6,10 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 
 export function Header() {
 
+    
     const { status, data } = useSession()
-
+    
+    console.log('fafafaf', status)
     async function handleLogin() {
         await signIn()
     }
@@ -26,12 +28,12 @@ export function Header() {
                 </Link>
 
                 {status === 'loading' && (
-                    <button>
+                    <button className="animate-spin">
                         <FiLoader size={26} color="#4b5563" />
                     </button>
                 )}
 
-                {status === 'authenticated' && (
+                {status === 'unauthenticated' && (
                     <button onClick={handleLogin}>
                         <FiLock size={26} color="#4b5563" />
                     </button>
