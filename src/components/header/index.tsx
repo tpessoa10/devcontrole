@@ -34,17 +34,17 @@ export function Header() {
                 )}
 
                 {status === 'unauthenticated' && (
-                    <button onClick={handleLogin}>
+                    <button className="cursor-pointer" onClick={handleLogin}>
                         <FiLock size={26} color="#4b5563" />
                     </button>
                 )}
 
                 {status === 'authenticated' && (
                     <div className="flex items-baseline gap-4">
-                        <Link href={"/dashboard"}>
+                        <Link className="cursor-pointer" href={"/dashboard"}>
                             <FiUser size={26} color="#4b5563" />
                         </Link>
-                        <button onClick={handleLogout}>
+                        <button className="cursor-pointer" onClick={handleLogout}>
                             <FiLogOut size={26} color="#4b5563" />
                         </button>
                     </div>
