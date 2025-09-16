@@ -9,7 +9,6 @@ export function Header() {
     
     const { status, data } = useSession()
     
-    console.log('fafafaf', status)
     async function handleLogin() {
         await signIn()
     }
