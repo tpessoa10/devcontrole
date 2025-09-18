@@ -18,7 +18,7 @@ export default async function Costumer(){
             <main>
                 <div className="flex items-center justify-between">
                     <h1 className="text-3xl font-bold">Meus clientes</h1>
-                    <Link href={"/dashboard/costumer/new"} className="bg-blue-500 text-white px-4 py-1 rounded">
+                    <Link href={"/dashboard/customer/new"} className="bg-blue-500 text-white px-4 py-1 rounded">
                         Novo cliente
                     </Link>
                 </div>

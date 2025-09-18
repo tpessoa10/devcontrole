@@ -23,7 +23,7 @@ export default async function NewCostumer() {
                         Novo cliente
                     </h1>
                 </div>
-                <NewCostumerForm/>
+                <NewCostumerForm userId={session.user.id}/>
             </main>
         </Container>
     )
