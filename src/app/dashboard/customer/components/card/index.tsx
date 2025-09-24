@@ -2,9 +2,10 @@
 
 import { api } from '@/lib/api'
 import { CustomerProps } from '@/utils/customer.type'
-import { id } from 'zod/locales'
+import { useRouter } from 'next/navigation'
 
 export function CardCustomer({customer}: {customer: CustomerProps}){
+    const router = useRouter()
     
     async function handleDeleteCustomer() {
         try{
@@ -13,6 +14,7 @@ export function CardCustomer({customer}: {customer: CustomerProps}){
                 id: customer.id
             }
         })
+        router.refresh()
         } catch(err){
             console.log(err)
         }
@@ -23,7 +25,7 @@ export function CardCustomer({customer}: {customer: CustomerProps}){
             <h2><a className="font-bold" href="">Nome</a>: {customer?.name}</h2>
             <p className="font-bold" >Email: {customer?.email}</p>
             <p className="font-bold" >Telefone: {customer?.phone}</p>
-            <button onClick={handleDeleteCustomer} className="bg-red-500 px-4 rounded text-white mt-2 self-start">
+            <button onClick={handleDeleteCustomer} className="bg-red-500 px-4 rounded text-white mt-2 self-start cursor-pointer">
                 Deletar
             </button>
         </article>    

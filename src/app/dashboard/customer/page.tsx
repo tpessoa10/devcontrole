@@ -35,6 +35,9 @@ export default async function Costumer(){
                         <CardCustomer customer={customer} key={customer.id}/>
                     ))}
                 </section>
+                {customers.length === 0 && (
+                    <h1 className="text-gray-600">Não possui clientes cadastrados</h1>
+                )}
             </main>
         </Container>
     )
