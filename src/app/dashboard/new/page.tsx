@@ -18,6 +18,29 @@ export default async function NewTicket() {
         }
     })
 
+    async function handleRegisterTicket(formData: FormData){
+        "use server"
+        const name = formData.get("name")
+        const description = formData.get("description")
+        const customerId = formData.get("customer")
+
+        if(!name || !description || !customerId){
+            return;
+        }
+
+        await prismaClient.ticket.create({
+            data:{
+                name: name as string,
+                description: description as string,
+                customerId: customerId as string,
+                status: "aberto",
+                userId: session?.user.id
+            }
+        })
+
+        redirect("/dashboard")
+    }
+
     return (
         <Container>
             <main className="mt-9 mb-2">
@@ -27,16 +50,16 @@ export default async function NewTicket() {
                     </Link>
                     <h1 className="text-3xl font-bold">Novo chamado</h1>
                 </div>
-                <form className="flex flex-col mt-6">
+                <form className="flex flex-col mt-6" action={handleRegisterTicket}>
                     <label className="mb-1 font-medium text-lg" htmlFor="">Nome do chamado</label>
-                    <input className="w-full border-2 rounded-md px-2 mb-2 h-11" type="text" required placeholder="Digite o nome do chamado..." />
+                    <input name="name" className="w-full border-2 rounded-md px-2 mb-2 h-11" type="text" required placeholder="Digite o nome do chamado..." />
                     <label className="mb-1 font-medium text-lg" htmlFor="">Descreva o problema</label>
-                    <textarea className="w-full border-2 rounded-md px-2 mb-2 h-24 resize-none" required placeholder="Descreva o problema...">
+                    <textarea name="description" className="w-full border-2 rounded-md px-2 mb-2 h-24 resize-none" required placeholder="Descreva o problema...">
                     </textarea>
                     {customers.length != 0 && (
                         <>
                             <label className="mb-1 font-medium text-lg" htmlFor="">Selecione o cliente</label>
-                            <select className="w-full border-2 rounded-md px-2 mb-2 h-11 bg-white" name="" id="">
+                            <select className="w-full border-2 rounded-md px-2 mb-2 h-11 bg-white" name="customer" id="">
                                 {customers.map((customer) => (
                                     <option key={customer.id} value={customer.id}>{customer.name}</option>
                                 ))}
