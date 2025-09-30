@@ -49,7 +49,9 @@ export default async function Dashboard() {
                             <TicketItem ticket={ticket} customer={ticket.customer} key={ticket.id}/>
                         ))}
                         {tickets.length === 0 && (
-                            <h1 className="px-2 text-gray-600 md:px-0">Nenhum ticket encontrado</h1>
+                            <tr>
+                                <td className="px-2 text-gray-600 md:px-0">Nenhum ticket encontrado</td>
+                            </tr>
                         )}
                     </tbody>
                 </table>
