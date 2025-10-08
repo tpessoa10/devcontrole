@@ -74,7 +74,7 @@ export default async function NewTicket() {
 
                     <button disabled={customers.length === 0 ? true : false} type="submit" 
                     className="bg-blue-500 text-white font-bold px-2 h-11 rounded cursor-pointer my-4 disabled:cursor-not-allowed disabled:bg-gray-400">
-                        Cadastrar
+                        <p className="text-white">Cadastrar</p>
                     </button>
                 </form>
             </main>
